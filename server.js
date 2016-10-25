@@ -5,6 +5,7 @@ const app = express();
 const { createReadStream } = require('fs');
 const request = require('request');
 const exec = require('child_process').exec;
+const socketio = require('socket.io');
 /////////////////////////////////////////
 
 let counter = 1;
@@ -30,4 +31,4 @@ takePicture()
 });
 
 
-app.listen(3000, () => console.log(`Currently listening on port 3000`));
+app.listen(4000, () => console.log(`Currently listening on port 4000`));
