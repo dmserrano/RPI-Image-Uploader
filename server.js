@@ -4,25 +4,15 @@ const express = require('express');
 const app = express();
 const { createReadStream } = require('fs');
 const request = require('request');
-const exec = require('child_process').exec;
-const socketio = require('socket.io');
+const takeSinglePic = require('./commands/takeSinglePic.js');
 /////////////////////////////////////////
 
-let counter = 1;
 
-const takePicture = () => {
-  return new Promise((resolve, reject) => {
-    exec(`raspistill -o ~/spy-on-fido/image1.jpg`);
-    counter++;
-    resolve();
-  })
-};
-
-takePicture()
+takeSinglePic()
 .then(() => {
   setTimeout(() => {
-  console.log('Read stream now')
-  createReadStream('image1.jpg')
+  console.log('Sending image to server');
+  createReadStream('img/image.jpg')
   .pipe(request.post('http://10.0.0.168:3000/api/image/new'));
   }, 6000);
 })
@@ -31,4 +21,4 @@ takePicture()
 });
 
 
-app.listen(4000, () => console.log(`Currently listening on port 4000`));
+app.listen(3000, () => console.log(`Currently listening on port 3000`));
