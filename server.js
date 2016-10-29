@@ -2,23 +2,23 @@
 
 const express = require('express');
 const app = express();
-const { createReadStream } = require('fs');
-const request = require('request');
-const takeSinglePic = require('./commands/takeSinglePic.js');
+const takeImage = require('./commands/takeImage.js');
+const takeVideo = require('./commands/takeVideo.js');
+const { red, cyan } = require('chalk');
 /////////////////////////////////////////
 
+// takeImage();
+// takeVideo();
 
-takeSinglePic()
-.then(() => {
-  setTimeout(() => {
-  console.log('Sending image to server');
-  createReadStream('img/image.jpg')
-  .pipe(request.post('http://10.0.0.168:3000/api/image/new'));
-  }, 6000);
+app.use(( err, { url }, res, next) => {
+  const timeStamp = Date().slice(16, -15);
+  console.error(
+    `${red(timeStamp)} [${red(`${url}`)}]`
+  );
+  console.error(err.stack);
 })
-.catch((err) => {
-  console.log(err);
+
+
+app.listen(3000, () => {
+  console.log(cyan(Date().slice(16, -15)), `Currently listening on port 3000`);
 });
-
-
-app.listen(3000, () => console.log(`Currently listening on port 3000`));
