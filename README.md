@@ -17,8 +17,3 @@ When the capture image or record video command is received from the user interfa
   - NodeJS v6.7.0
   - Express v4.14
   - Request NPM module 2.76.0
-
-
-
-###### Picture take with Camera Module, hosted on AWS S3 hosting service
-![alt]("https://s3.us-east-2.amazonaws.com/spyonfido/image111.jpg")  
