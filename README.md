@@ -21,4 +21,4 @@ When the capture image or record video command is received from the user interfa
 
 
 ###### Picture take with Camera Module, hosted on AWS S3 hosting service
-![alt](https://s3.us-east-2.amazonaws.com/spyonfido/image111.jpg)  
+![alt]("https://s3.us-east-2.amazonaws.com/spyonfido/image111.jpg")  
